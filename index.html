@@ -14,25 +14,58 @@
 <body class="bg-white text-zinc-900 antialiased">
 
     <!-- Header / Navbar Principal -->
-    <header class="w-full bg-white border-b border-zinc-200 py-4 px-6 fixed top-0 z-50">
-        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
-            <a href="#" class="text-2xl font-serif tracking-widest text-zinc-900 font-bold uppercase">
-                MALA MÍA.
-            </a>
+    <header class="w-full bg-white border-b border-zinc-200 py-4 px-6 fixed top-0 z-50 flex justify-between items-center">
+        <a href="#" class="text-2xl font-serif tracking-widest text-zinc-900 font-bold uppercase">
+            MALA MÍA.
+        </a>
 
-            <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold tracking-wider uppercase text-zinc-800">
-                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Nueva Colección</a>
-                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Outfits Urbanos</a>
-                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Sweaters</a>
-                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Outlet</a>
-                <a href="#sucursales" class="hover:text-pink-600 transition-colors">Sucursales</a>
-            </nav>
+        <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold tracking-wider uppercase text-zinc-800">
+            <a href="#catalogo" class="hover:text-pink-600 transition-colors">Catálogo</a>
+            <a href="#envios" class="hover:text-pink-600 transition-colors">Envíos</a>
+            <a href="#sucursales" class="hover:text-pink-600 transition-colors">Sucursales</a>
+        </nav>
 
-            <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20hacer%20un%20pedido" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2.5 rounded text-xs font-bold tracking-wide uppercase transition-all shadow-sm">
-                Asesoramiento Online
-            </a>
-        </div>
+        <!-- Botón del Carrito -->
+        <button onclick="toggleCart()" class="relative bg-zinc-900 hover:bg-black text-white px-4 py-2 rounded text-xs font-bold uppercase tracking-wider transition-all flex items-center gap-2">
+            <span>🛒 Carrito</span>
+            <span id="cartCount" class="bg-pink-600 text-white rounded-full px-2 py-0.5 text-[10px]">0</span>
+        </button>
     </header>
+
+    <!-- Panel Lateral del Carrito (Drawer) -->
+    <div id="cartDrawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col border-l border-zinc-200">
+        <div class="p-6 border-b border-zinc-200 flex justify-between items-center bg-zinc-50">
+            <h2 class="text-sm font-bold uppercase tracking-wider">Tu Carrito de Compras</h2>
+            <button onclick="toggleCart()" class="text-zinc-500 hover:text-black font-bold text-lg">✕</button>
+        </div>
+        
+        <!-- Lista de productos en el carrito -->
+        <div id="cartItems" class="flex-1 overflow-y-auto p-6 space-y-4 divide-y divide-zinc-100">
+            <p class="text-xs text-zinc-400 text-center py-8">Tu carrito está vacío</p>
+        </div>
+
+        <!-- Resumen y Envíos -->
+        <div class="p-6 border-t border-zinc-200 bg-zinc-50 space-y-4">
+            <!-- Selector de Envíos -->
+            <div class="space-y-1">
+                <label class="text-[11px] font-bold uppercase tracking-wider text-zinc-600">Método de Envío:</label>
+                <select id="shippingSelect" onchange="updateTotal()" class="w-full bg-white border border-zinc-300 rounded p-2 text-xs text-zinc-800 focus:outline-none focus:border-black">
+                    <option value="0">Retiro por Local (Gratis)</option>
+                    <option value="3500">Envío Local / Moto ($3.500)</option>
+                    <option value="6000">Envío a todo el País / Correo ($6.000)</option>
+                </select>
+            </div>
+
+            <div class="flex justify-between items-center text-sm font-bold pt-2 border-t border-zinc-200">
+                <span>Total Final:</span>
+                <span id="cartTotal" class="text-pink-600 font-mono text-base">$0</span>
+            </div>
+
+            <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3 rounded text-xs font-bold uppercase tracking-wider transition-all shadow-sm">
+                Finalizar Compra por WhatsApp
+            </button>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="pt-28 pb-12 px-6 max-w-7xl mx-auto">
@@ -42,11 +75,11 @@
                     TU ESTILO URBANO, AHORA ONLINE.
                 </h1>
                 <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
-                    Elegí tu prenda favorita y pagá de forma segura con tarjeta o transferencia.
+                    Elegí tus prendas, sumalas al carrito y recibilas en tu casa con envíos a todo el país.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                     <a href="#catalogo" class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-7 py-3.5 rounded text-xs tracking-wider uppercase transition-all shadow-md">
-                        Ver Catálogo Online
+                        Ver Catálogo
                     </a>
                 </div>
             </div>
@@ -58,13 +91,10 @@
         </div>
     </section>
 
-    <!-- Franja Negra Separadora -->
-    <div class="w-full bg-zinc-950 h-16 my-4"></div>
-
-    <!-- Sección de Productos con Compra Online -->
+    <!-- Sección de Productos -->
     <section id="catalogo" class="py-12 px-6 max-w-7xl mx-auto">
         <div class="mb-8">
-            <h2 class="text-xl font-bold uppercase tracking-wider text-zinc-900">Productos Disponibles para Compra Inmediata</h2>
+            <h2 class="text-xl font-bold uppercase tracking-wider text-zinc-900">Catálogo de Productos</h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -78,17 +108,13 @@
                     </div>
                     <div class="p-4 space-y-1">
                         <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Campera de Cuero Urbana</h3>
-                        <p class="text-xs text-zinc-500 font-mono font-bold text-pink-600">$16.390</p>
+                        <p class="text-xs text-pink-600 font-mono font-bold">$16.390</p>
                     </div>
                 </div>
-                <div class="p-4 pt-0 flex flex-col gap-2">
-                    <!-- Link de pago directo de Mercado Pago (reemplazar la URL del href con tu link real) -->
-                    <a href="https://mpago.la/tu-link-de-pago-ejemplo" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2.5 rounded text-xs font-bold uppercase text-center transition-all shadow-sm">
-                        Comprar Online (Mercado Pago)
-                    </a>
-                    <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20consultar%20talles%20de%20la%20campera" target="_blank" class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 py-2 rounded text-xs font-semibold uppercase text-center transition-all">
-                        Consultar por WhatsApp
-                    </a>
+                <div class="p-4 pt-0">
+                    <button onclick="addToCart('Campera de Cuero Urbana', 16390)" class="w-full bg-zinc-900 hover:bg-black text-white py-2.5 rounded text-xs font-bold uppercase tracking-wider transition-all">
+                        Agregar al Carrito
+                    </button>
                 </div>
             </div>
 
@@ -101,16 +127,13 @@
                     </div>
                     <div class="p-4 space-y-1">
                         <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Sweater Oversize Tejido</h3>
-                        <p class="text-xs text-zinc-500 font-mono font-bold text-pink-600">$7.990</p>
+                        <p class="text-xs text-pink-600 font-mono font-bold">$7.990</p>
                     </div>
                 </div>
-                <div class="p-4 pt-0 flex flex-col gap-2">
-                    <a href="https://mpago.la/tu-link-de-pago-ejemplo" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2.5 rounded text-xs font-bold uppercase text-center transition-all shadow-sm">
-                        Comprar Online (Mercado Pago)
-                    </a>
-                    <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20consultar%20por%20el%20sweater" target="_blank" class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 py-2 rounded text-xs font-semibold uppercase text-center transition-all">
-                        Consultar por WhatsApp
-                    </a>
+                <div class="p-4 pt-0">
+                    <button onclick="addToCart('Sweater Oversize Tejido', 7990)" class="w-full bg-zinc-900 hover:bg-black text-white py-2.5 rounded text-xs font-bold uppercase tracking-wider transition-all">
+                        Agregar al Carrito
+                    </button>
                 </div>
             </div>
 
@@ -123,26 +146,122 @@
                     </div>
                     <div class="p-4 space-y-1">
                         <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Jeans Mom Fit Rígido</h3>
-                        <p class="text-xs text-zinc-500 font-mono font-bold text-pink-600">$11.990</p>
+                        <p class="text-xs text-pink-600 font-mono font-bold">$11.990</p>
                     </div>
                 </div>
-                <div class="p-4 pt-0 flex flex-col gap-2">
-                    <a href="https://mpago.la/tu-link-de-pago-ejemplo" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2.5 rounded text-xs font-bold uppercase text-center transition-all shadow-sm">
-                        Comprar Online (Mercado Pago)
-                    </a>
-                    <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20consultar%20talles%20de%20los%2520jeans" target="_blank" class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 py-2 rounded text-xs font-semibold uppercase text-center transition-all">
-                        Consultar por WhatsApp
-                    </a>
+                <div class="p-4 pt-0">
+                    <button onclick="addToCart('Jeans Mom Fit Rígido', 11990)" class="w-full bg-zinc-900 hover:bg-black text-white py-2.5 rounded text-xs font-bold uppercase tracking-wider transition-all">
+                        Agregar al Carrito
+                    </button>
                 </div>
             </div>
 
         </div>
     </section>
 
+    <!-- Sección de Envíos informativa -->
+    <section id="envios" class="py-16 px-6 max-w-5xl mx-auto border-t border-zinc-200 text-center space-y-4">
+        <h2 class="text-xl font-bold uppercase tracking-wider text-zinc-900">Información sobre Envíos</h2>
+        <p class="text-xs text-zinc-600 max-w-lg mx-auto leading-relaxed">
+            Realizamos envíos seguros a todo el país mediante correo postal y entregas express en moto dentro de la zona. Todos los pedidos se despachan dentro de las 24 hs hábiles.
+        </p>
+    </section>
+
     <!-- Footer -->
-    <footer class="mt-20 py-8 border-t border-zinc-200 text-center text-xs text-zinc-500">
+    <footer class="mt-12 py-8 border-t border-zinc-200 text-center text-xs text-zinc-500">
         <p>Desarrollado por RODI.MAIN para malamiaindu.com © 2026</p>
     </footer>
 
+    <!-- Lógica del Carrito en JavaScript -->
+    <script>
+        let cart = [];
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            drawer.classList.toggle('translate-x-full');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            toggleCart(); // Abre el carrito automáticamente al agregar
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cartItems');
+            const cartCount = document.getElementById('cartCount');
+            
+            // Contar total de productos
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalCount;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p class="text-xs text-zinc-400 text-center py-8">Tu carrito está vacío</p>`;
+                document.getElementById('cartTotal').textContent = '$0';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = '';
+            cart.forEach((item, index) => {
+                cartItemsContainer.innerHTML += `
+                    py-4 flex justify-between items-center text-xs">
+                        <div>
+                            <p class="font-bold text-zinc-800">${item.name}</p>
+                            <p class="text-zinc-500">$${item.price.toLocaleString()} x ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="font-mono font-bold">$${(item.price * item.quantity).toLocaleString()}</span>
+                            <button onclick="removeFromCart(${index})" class="text-red-500 hover:text-red-700 font-bold">✕</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            updateTotal();
+        }
+
+        function updateTotal() {
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shippingCost = parseInt(document.getElementById('shippingSelect').value);
+            const total = subtotal + shippingCost;
+
+            document.getElementById('cartTotal').textContent = `$${total.toLocaleString()}`;
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('El carrito está vacío');
+                return;
+            }
+
+            let message = "Hola! Quiero realizar el siguiente pedido desde malamiaindu.com:\n\n";
+            cart.forEach(item => {
+                message += `- ${item.name} (x${item.quantity}): $${(item.price * item.quantity).toLocaleString()}\n`;
+            });
+
+            const shippingText = document.getElementById('shippingSelect').selectedOptions[0].text;
+            message += `\nMétodo de envío: ${shippingText}\n`;
+            
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shippingCost = parseInt(document.getElementById('shippingSelect').value);
+            const total = subtotal + shippingCost;
+
+            message += `*Total a abonar: $${total.toLocaleString()}*`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/5493541000000?text=${encodedMessage}`, '_blank');
+        }
+    </script>
 </body>
 </html>
+
