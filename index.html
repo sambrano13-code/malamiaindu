@@ -16,54 +16,41 @@
     <!-- Header / Navbar Principal -->
     <header class="w-full bg-white border-b border-zinc-200 py-4 px-6 fixed top-0 z-50">
         <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
-            <!-- Logo -->
-            <a href="#" class="text-2xl font-serif tracking-widest text-zinc-900 font-bold uppercase" style="font-family: serif;">
+            <a href="#" class="text-2xl font-serif tracking-widest text-zinc-900 font-bold uppercase">
                 MALA MÍA.
             </a>
 
-            <!-- Menú de navegación central -->
             <nav class="hidden lg:flex items-center space-x-6 text-xs font-semibold tracking-wider uppercase text-zinc-800">
-                <a href="#coleccion" class="hover:text-pink-600 transition-colors">Nueva Colección</a>
-                <a href="#outfits" class="hover:text-pink-600 transition-colors">Outfits Urbanos</a>
-                <a href="#sweaters" class="hover:text-pink-600 transition-colors">Sweaters</a>
-                <a href="#outlet" class="hover:text-pink-600 transition-colors">Outlet</a>
-                <a href="#sales" class="hover:text-pink-600 transition-colors">Sales</a>
+                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Nueva Colección</a>
+                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Outfits Urbanos</a>
+                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Sweaters</a>
+                <a href="#catalogo" class="hover:text-pink-600 transition-colors">Outlet</a>
                 <a href="#sucursales" class="hover:text-pink-600 transition-colors">Sucursales</a>
             </nav>
 
-            <!-- Botón de WhatsApp Superior -->
             <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20hacer%20un%20pedido" target="_blank" class="bg-pink-600 hover:bg-pink-700 text-white px-5 py-2.5 rounded text-xs font-bold tracking-wide uppercase transition-all shadow-sm">
-                Pedir por WhatsApp
+                Asesoramiento Online
             </a>
         </div>
     </header>
 
-    <!-- Hero Section / Banner Principal Estilo E-commerce -->
+    <!-- Hero Section -->
     <section class="pt-28 pb-12 px-6 max-w-7xl mx-auto">
         <div class="bg-zinc-950 rounded-2xl overflow-hidden relative flex flex-col lg:flex-row items-center justify-between text-white p-8 md:p-16 min-h-[480px]">
-            
-            <!-- Contenido izquierdo (Texto y Botones) -->
             <div class="z-10 max-w-xl space-y-6 text-center lg:text-left">
                 <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight">
                     TU ESTILO URBANO, AHORA ONLINE.
                 </h1>
                 <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
-                    Encontrá las últimas tendencias y hacé tu pedido directo al instante.
+                    Elegí tu prenda favorita y pagá de forma segura con tarjeta o transferencia.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                     <a href="#catalogo" class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-7 py-3.5 rounded text-xs tracking-wider uppercase transition-all shadow-md">
-                        Comprar Ahora
-                    </a>
-                    <a href="https://wa.me/5493541000000" target="_blank" class="bg-transparent hover:bg-white/10 border border-white text-white font-medium px-6 py-3.5 rounded text-xs tracking-wider uppercase transition-all">
-                        Consultar Stock (WhatsApp)
+                        Ver Catálogo Online
                     </a>
                 </div>
             </div>
-
-            <!-- Imagen derecha del banner -->
             <div class="mt-8 lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-1/2 flex items-center justify-end overflow-hidden opacity-90">
-                <div class="w-full h-72 lg:h-full bg-gradient-to-l from-transparent to-zinc-950 absolute inset-0 z-10 lg:block hidden"></div>
-                <!-- Simulación de la foto de la modelo -->
                 <div class="w-full h-80 lg:h-full bg-zinc-800 flex items-center justify-center text-zinc-500 text-xs font-mono">
                     [FOTO MODELO CAMPERA CUERO]
                 </div>
@@ -74,11 +61,15 @@
     <!-- Franja Negra Separadora -->
     <div class="w-full bg-zinc-950 h-16 my-4"></div>
 
-    <!-- Sección de Productos / Catálogo -->
+    <!-- Sección de Productos con Compra Online -->
     <section id="catalogo" class="py-12 px-6 max-w-7xl mx-auto">
+        <div class="mb-8">
+            <h2 class="text-xl font-bold uppercase tracking-wider text-zinc-900">Productos Disponibles para Compra Inmediata</h2>
+        </div>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <!-- Tarjeta 1 -->
+            <!-- Producto 1 -->
             <div class="bg-white border border-zinc-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                     <div class="h-64 bg-zinc-900 relative flex items-center justify-center text-white font-bold tracking-widest text-center p-4">
@@ -86,17 +77,22 @@
                         <span class="relative z-10 uppercase text-sm">Abrigos & Camperas</span>
                     </div>
                     <div class="p-4 space-y-1">
-                        <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Abrigos & Camperas</h3>
-                        <p class="text-xs text-zinc-500 font-mono">$16.390</p>
+                        <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Campera de Cuero Urbana</h3>
+                        <p class="text-xs text-zinc-500 font-mono font-bold text-pink-600">$16.390</p>
                     </div>
                 </div>
-                <div class="p-4 pt-0 flex items-center gap-2">
-                    <button class="flex-1 bg-zinc-900 hover:bg-black text-white py-2 rounded text-xs font-bold uppercase transition-all">Comprar</button>
-                    <a href="https://wa.me/5493541000000" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded text-xs font-bold uppercase text-center transition-all">WhatsApp</a>
+                <div class="p-4 pt-0 flex flex-col gap-2">
+                    <!-- Link de pago directo de Mercado Pago (reemplazar la URL del href con tu link real) -->
+                    <a href="https://mpago.la/tu-link-de-pago-ejemplo" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2.5 rounded text-xs font-bold uppercase text-center transition-all shadow-sm">
+                        Comprar Online (Mercado Pago)
+                    </a>
+                    <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20consultar%20talles%20de%20la%20campera" target="_blank" class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 py-2 rounded text-xs font-semibold uppercase text-center transition-all">
+                        Consultar por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <!-- Tarjeta 2 -->
+            <!-- Producto 2 -->
             <div class="bg-white border border-zinc-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                     <div class="h-64 bg-zinc-800 relative flex items-center justify-center text-white font-bold tracking-widest text-center p-4">
@@ -104,17 +100,21 @@
                         <span class="relative z-10 uppercase text-sm">Tejidos & Sweaters</span>
                     </div>
                     <div class="p-4 space-y-1">
-                        <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Tejidos & Sweaters</h3>
-                        <p class="text-xs text-zinc-500 font-mono">$7.990</p>
+                        <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Sweater Oversize Tejido</h3>
+                        <p class="text-xs text-zinc-500 font-mono font-bold text-pink-600">$7.990</p>
                     </div>
                 </div>
-                <div class="p-4 pt-0 flex items-center gap-2">
-                    <button class="flex-1 bg-zinc-900 hover:bg-black text-white py-2 rounded text-xs font-bold uppercase transition-all">Comprar</button>
-                    <a href="https://wa.me/5493541000000" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded text-xs font-bold uppercase text-center transition-all">WhatsApp</a>
+                <div class="p-4 pt-0 flex flex-col gap-2">
+                    <a href="https://mpago.la/tu-link-de-pago-ejemplo" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2.5 rounded text-xs font-bold uppercase text-center transition-all shadow-sm">
+                        Comprar Online (Mercado Pago)
+                    </a>
+                    <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20consultar%20por%20el%20sweater" target="_blank" class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 py-2 rounded text-xs font-semibold uppercase text-center transition-all">
+                        Consultar por WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <!-- Tarjeta 3 -->
+            <!-- Producto 3 -->
             <div class="bg-white border border-zinc-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
                 <div>
                     <div class="h-64 bg-zinc-900 relative flex items-center justify-center text-white font-bold tracking-widest text-center p-4">
@@ -122,13 +122,17 @@
                         <span class="relative z-10 uppercase text-sm">Jeans & Pantalones</span>
                     </div>
                     <div class="p-4 space-y-1">
-                        <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Jeans & Pantalones</h3>
-                        <p class="text-xs text-zinc-500 font-mono">$11.990</p>
+                        <h3 class="text-xs font-bold text-zinc-800 uppercase tracking-wider">Jeans Mom Fit Rígido</h3>
+                        <p class="text-xs text-zinc-500 font-mono font-bold text-pink-600">$11.990</p>
                     </div>
                 </div>
-                <div class="p-4 pt-0 flex items-center gap-2">
-                    <button class="flex-1 bg-zinc-900 hover:bg-black text-white py-2 rounded text-xs font-bold uppercase transition-all">Comprar</button>
-                    <a href="https://wa.me/5493541000000" target="_blank" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded text-xs font-bold uppercase text-center transition-all">WhatsApp</a>
+                <div class="p-4 pt-0 flex flex-col gap-2">
+                    <a href="https://mpago.la/tu-link-de-pago-ejemplo" target="_blank" class="w-full bg-sky-500 hover:bg-sky-600 text-white py-2.5 rounded text-xs font-bold uppercase text-center transition-all shadow-sm">
+                        Comprar Online (Mercado Pago)
+                    </a>
+                    <a href="https://wa.me/5493541000000?text=Hola,%20quiero%20consultar%20talles%20de%20los%2520jeans" target="_blank" class="w-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 py-2 rounded text-xs font-semibold uppercase text-center transition-all">
+                        Consultar por WhatsApp
+                    </a>
                 </div>
             </div>
 
