@@ -50,7 +50,7 @@
             <div class="space-y-1">
                 <label class="text-[11px] font-bold uppercase tracking-wider text-zinc-600">Método de Envío:</label>
                 <select id="shippingSelect" onchange="updateTotal()" class="w-full bg-white border border-zinc-300 rounded p-2 text-xs text-zinc-800 focus:outline-none focus:border-black">
-                    <option value="0">Retiro por Local (Gratis)</option>
+                    <option value="0">Retiro por Sucursal (Gratis)</option>
                     <option value="3500">Envío Local / Moto ($3.500)</option>
                     <option value="6000">Envío a todo el País / Correo ($6.000)</option>
                 </select>
@@ -75,7 +75,7 @@
                     TU ESTILO URBANO, AHORA ONLINE.
                 </h1>
                 <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
-                    Elegí tus prendas, sumalas al carrito y recibilas en tu casa con envíos a todo el país.
+                    Elegí tus prendas, sumalas al carrito y retiralas por nuestras sucursales o recibilas en tu casa.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                     <a href="#catalogo" class="bg-pink-600 hover:bg-pink-700 text-white font-bold px-7 py-3.5 rounded text-xs tracking-wider uppercase transition-all shadow-md">
@@ -163,8 +163,31 @@
     <section id="envios" class="py-16 px-6 max-w-5xl mx-auto border-t border-zinc-200 text-center space-y-4">
         <h2 class="text-xl font-bold uppercase tracking-wider text-zinc-900">Información sobre Envíos</h2>
         <p class="text-xs text-zinc-600 max-w-lg mx-auto leading-relaxed">
-            Realizamos envíos seguros a todo el país mediante correo postal y entregas express en moto dentro de la zona. Todos los pedidos se despachan dentro de las 24 hs hábiles.
+            Realizamos envíos seguros a todo el país mediante correo postal y entregas express. También podés retirar tu compra de forma gratuita por cualquiera de nuestras sucursales físicas.
         </p>
+    </section>
+
+    <!-- Sección de Sucursales -->
+    <section id="sucursales" class="py-16 px-6 max-w-7xl mx-auto border-t border-zinc-200">
+        <div class="text-center mb-10">
+            <h2 class="text-xl font-bold uppercase tracking-wider text-zinc-900">Nuestras Sucursales</h2>
+            <p class="text-xs text-zinc-500 mt-1">Visitá nuestros locales y encontrá todo el stock disponible.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-zinc-50 border border-zinc-200 p-6 rounded-xl text-center space-y-2">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-pink-600">Villa Carlos Paz</h3>
+                <p class="text-xs text-zinc-600">Atención personalizada y showroom oficial.</p>
+            </div>
+            <div class="bg-zinc-50 border border-zinc-200 p-6 rounded-xl text-center space-y-2">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-pink-600">Cosquín</h3>
+                <p class="text-xs text-zinc-600">Últimas tendencias de temporada.</p>
+            </div>
+            <div class="bg-zinc-50 border border-zinc-200 p-6 rounded-xl text-center space-y-2">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-pink-600">La Falda</h3>
+                <p class="text-xs text-zinc-600">Punto de venta y retiro de compras online.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Footer -->
@@ -189,7 +212,7 @@
                 cart.push({ name, price, quantity: 1 });
             }
             updateCartUI();
-            toggleCart(); // Abre el carrito automáticamente al agregar
+            toggleCart();
         }
 
         function removeFromCart(index) {
@@ -201,7 +224,6 @@
             const cartItemsContainer = document.getElementById('cartItems');
             const cartCount = document.getElementById('cartCount');
             
-            // Contar total de productos
             const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
             cartCount.textContent = totalCount;
 
@@ -214,7 +236,7 @@
             cartItemsContainer.innerHTML = '';
             cart.forEach((item, index) => {
                 cartItemsContainer.innerHTML += `
-                    py-4 flex justify-between items-center text-xs">
+                    <div class="py-4 flex justify-between items-center text-xs">
                         <div>
                             <p class="font-bold text-zinc-800">${item.name}</p>
                             <p class="text-zinc-500">$${item.price.toLocaleString()} x ${item.quantity}</p>
@@ -250,7 +272,7 @@
             });
 
             const shippingText = document.getElementById('shippingSelect').selectedOptions[0].text;
-            message += `\nMétodo de envío: ${shippingText}\n`;
+            message += `\nMétodo de envío/retiro: ${shippingText}\n`;
             
             const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
             const shippingCost = parseInt(document.getElementById('shippingSelect').value);
@@ -264,4 +286,3 @@
     </script>
 </body>
 </html>
-
